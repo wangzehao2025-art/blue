@@ -1,0 +1,50 @@
+# ⚠️ 永远不要提交 API Keys 和敏感配置
+.env
+.env.local
+.env.*.local
+*.key
+*.secret
+secrets.json
+config.local.*
+
+# 用户数据备份 (本地数据)
+blueocean-backup-*.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.python-version
+
+# Node (如果有)
+node_modules/
+package-lock.json
+yarn.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# 临时文件
+*.log
+*.tmp
+*.bak
+*.orig
+_chk.js
+_all.js
+/tmp/
+
+# 构建产物
+dist/
+build/
+out/
+
+# 用户特定的 quick-setup 配置
+quick-setup.local.html
+my-config.html

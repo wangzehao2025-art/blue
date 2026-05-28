@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>修复 Agent 对话</title>
+<style>
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;max-width:600px;margin:60px auto;padding:30px;background:#f9fafb;color:#111827;line-height:1.7;text-align:center}
+.card{background:#fff;border-radius:10px;padding:30px;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+.btn{display:inline-block;padding:12px 28px;background:#10b981;color:#fff;border-radius:6px;border:none;cursor:pointer;font-size:16px;font-weight:500;font-family:inherit}
+#log{background:#0f172a;color:#e2e8f0;padding:14px;border-radius:6px;font-family:Consolas,monospace;font-size:12px;line-height:1.7;margin-top:14px;min-height:120px;text-align:left;white-space:pre-wrap}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1 style="margin-bottom:14px">🔧 修复 Agent 对话</h1>
+  <p style="color:#6b7280">清空 AI 顾问的对话历史,但保留所有其他数据 (候选池/竞品/供应商/AI 配置)。</p>
+  <div id="log">点击下方按钮开始...</div>
+  <button class="btn" id="goBtn" style="margin-top:16px">🧹 清空对话并跳转</button>
+</div>
+
+<script>
+const LOG=document.getElementById('log');
+function log(m,cls){LOG.innerHTML+=(cls?'<span style="color:'+cls+'">'+m+'</span>':m)+'\n'}
+
+document.getElementById('goBtn').addEventListener('click',()=>{
+  LOG.innerHTML='';
+  // 仅清空对话历史,保留所有其他数据
+  log('🧹 开始清理...');
+  log('');
+  try{
+    const before=localStorage.getItem('bo_agentChat');
+    log('当前对话条数: '+(before?JSON.parse(before).length:0));
+    localStorage.removeItem('bo_agentChat');
+    log('✅ bo_agentChat 已清空','#10b981');
+    log('');
+    // 保留这些 (不动)
+    log('保留的数据:');
+    ['bo_aiConfig','bo_feedsConfig','bo_saasConfig','bo_trendRadar','bo_candidates','bo_competitors','bo_suppliers','bo_library','bo_welcomed'].forEach(k=>{
+      const v=localStorage.getItem(k);
+      log('  '+(v?'✓':'×')+' '+k);
+    });
+    log('');
+    log('🎯 2 秒后跳转到 AI 顾问...','#3b82f6');
+    setTimeout(()=>{location.href='index.html'},2000);
+  }catch(e){log('❌ '+e.message,'#ef4444')}
+});
+
+// 自动执行
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('goBtn').click(),300));
+</script>
+</body>
+</html>
