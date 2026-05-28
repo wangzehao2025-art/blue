@@ -5,6 +5,15 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![No Build](https://img.shields.io/badge/build-no--build-green)]()
 [![Single File](https://img.shields.io/badge/distribution-single--file-blue)]()
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Open_Now-ec4899?style=flat-square)](https://wangzehao2025-art.github.io/blue/)
+
+## 🚀 在线体验 (无需下载)
+
+**直接访问 → https://wangzehao2025-art.github.io/blue/**
+
+- ✅ 浏览器打开就能用,数据保存你本地 (不上传任何服务器)
+- ✅ 配 DeepSeek API Key 后立即获得 AI 选品顾问
+- ✅ 想离线/二次开发?[Download ZIP](https://github.com/wangzehao2025-art/blue/archive/refs/heads/main.zip)
 
 ---
 
